@@ -36,12 +36,13 @@ export class OrderController {
     @Post()
     @Redirect('orders')
     async store(@Req() request: Request) {
-        const [location_id, location_geo] = request.body['location'].split('/');
+        const [location_id, location_name, location_geo] = request.body['location'].split('/');
         const [driver_id, driver_name] = request.body['driver'].split(',');
         const order = this.orderRepo.create({
             driver_id,
             driver_name,
             location_id,
+            location_name,
             location_geo: location_geo.split(',')
         });
         await this.orderRepo.save(order);

@@ -32,6 +32,7 @@ export class OrderSubscriberService implements EntitySubscriberInterface<Order> 
                 id: order.id,
                 driver_name: order.driver_name,
                 location_id: order.location_id,
+                location_name: order.location_name,
                 location_geo: order.location_geo,
 
                 order: order.id,

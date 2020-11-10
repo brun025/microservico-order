@@ -4,6 +4,7 @@ CREATE TABLE IF NOT EXISTS `micro_orders`.`orders` (
   `driver_id` VARCHAR(255) NOT NULL,
   `driver_name` VARCHAR(255) NOT NULL,
   `location_id` SMALLINT NOT NULL,
+  `location_name` VARCHAR(255),
   `location_geo` VARCHAR(255) NOT NULL,
   `status` SMALLINT NOT NULL,
   `created_at` TIMESTAMP NOT NULL,
