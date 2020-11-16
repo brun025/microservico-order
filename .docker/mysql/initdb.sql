@@ -9,4 +9,4 @@ CREATE TABLE IF NOT EXISTS `micro_orders`.`orders` (
   `status` SMALLINT NOT NULL,
   `created_at` TIMESTAMP NOT NULL,
   PRIMARY KEY (`id`)
-)
+);

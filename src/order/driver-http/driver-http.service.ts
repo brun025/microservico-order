@@ -11,9 +11,9 @@ export class DriverHttpService {
 
     list() {
         return this.httpService
-            .get<{drivers: any[]}>(`${this.baseUrl}/drivers`)
+            .get(`${this.baseUrl}/auth/drivers`)
             .pipe(
-                map(response => response.data.drivers)
+                map(response => response.data.found.users)
             ) //Reactive X
     }
 

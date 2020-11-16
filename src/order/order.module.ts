@@ -1,6 +1,6 @@
 import {HttpModule, Module} from '@nestjs/common';
 import {OrderController} from "./order.controller";
-import {Order, } from "./order.model";
+import {Order} from "./order.model";
 import { RabbitMQModule } from '@golevelup/nestjs-rabbitmq';
 import { ChangeStatusOrderService } from './change-status-order/change-status-order.service';
 import {TypeOrmModule} from "@nestjs/typeorm";
