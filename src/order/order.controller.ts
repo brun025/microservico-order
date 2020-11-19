@@ -11,9 +11,7 @@ export class OrderController {
         @InjectRepository(Order)
         private readonly orderRepo: Repository<Order>,
         private readonly driverHttp: DriverHttpService
-    ) {
-
-    }
+    ) { }
 
     @Get()
     @Render('order/index')
@@ -45,5 +43,11 @@ export class OrderController {
             location_geo: location_geo.split(',')
         });
         await this.orderRepo.save(order);
+    }
+
+    @Get('/login')
+    @Render('order/login')
+    root() {
+        return {message: 'tela de login'}
     }
 }
