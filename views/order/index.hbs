@@ -25,7 +25,7 @@
                     <MUI.Table>
                         <MUI.TableHead>
                             <MUI.TableRow>
-                                <MUI.TableCell>ID</MUI.TableCell>
+                                <MUI.TableCell>Produto</MUI.TableCell>
                                 <MUI.TableCell>Motorista</MUI.TableCell>
                                 <MUI.TableCell>Destino</MUI.TableCell>
                                 <MUI.TableCell>Entregue?</MUI.TableCell>
@@ -35,7 +35,7 @@
                         <MUI.TableBody>
                             {{#forEach data}}
                                 <MUI.TableRow>
-                                    <MUI.TableCell>{{id}}</MUI.TableCell>
+                                    <MUI.TableCell>{{product_name}}</MUI.TableCell>
                                     <MUI.TableCell>{{driver_name}}</MUI.TableCell>
                                     <MUI.TableCell>{{location_name}}</MUI.TableCell>
                                     <MUI.TableCell>{labelStatus({{status}})}</MUI.TableCell>

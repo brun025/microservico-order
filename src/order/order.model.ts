@@ -26,6 +26,21 @@ export class Order {
     @Column()
     location_name: string;
 
+    @Column()
+    user_id: string;
+
+    @Column()
+    user_name: string;
+
+    @Column()
+    product_id: string;
+
+    @Column()
+    product_name: string;
+
+    @Column()
+    amount: number;
+
     @Column("simple-array")
     location_geo: number[];
 

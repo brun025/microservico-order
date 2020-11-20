@@ -6,6 +6,7 @@ import { ChangeStatusOrderService } from './change-status-order/change-status-or
 import {TypeOrmModule} from "@nestjs/typeorm";
 import { OrderSubscriberService } from './order-subscriber/order-subscriber.service';
 import { DriverHttpService } from './driver-http/driver-http.service';
+import { ProductHttpService } from './product-http/product-http.service';
 
 @Module({
     imports: [
@@ -27,6 +28,7 @@ import { DriverHttpService } from './driver-http/driver-http.service';
         ChangeStatusOrderService,
         OrderSubscriberService,
         DriverHttpService,
+        ProductHttpService,
     ]
 })
 export class OrderModule {

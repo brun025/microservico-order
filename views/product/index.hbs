@@ -1,0 +1,54 @@
+<script type="text/babel">
+    function Page() {
+        return (
+                <MUI.Container>
+                    <MUI.Typography variant={"h4"}>Listagem de produtos</MUI.Typography>
+                    <MUI.Box dir={'rtl'} paddingBottom={2}>
+                        <MUI.Button
+                                title="Adicionar novo produto"
+                                color="primary"
+                                variant="contained"
+                                href="/products/create"
+                        >
+                            Novo produto
+                        </MUI.Button>
+                    </MUI.Box>
+                    <MUI.Table>
+                        <MUI.TableHead>
+                            <MUI.TableRow>
+                                <MUI.TableCell>Nome</MUI.TableCell>
+                                <MUI.TableCell>Preço</MUI.TableCell>
+                                <MUI.TableCell>Descrição</MUI.TableCell>
+                                <MUI.TableCell>Ações</MUI.TableCell>
+                            </MUI.TableRow>
+                        </MUI.TableHead>
+                        <MUI.TableBody>
+                            {{#forEach data}}
+                                <MUI.TableRow>
+                                    <MUI.TableCell>{{name}}</MUI.TableCell>
+                                    <MUI.TableCell>{{price}}</MUI.TableCell>
+                                    <MUI.TableCell>{{description}}</MUI.TableCell>
+                                    <MUI.TableCell>
+                                        <MUI.Button
+                                            variant="contained"
+                                            color="primary"
+                                            startIcon={<MUI.Icon>edit</MUI.Icon>}
+                                            href="/products/edit/{{id}}"
+                                            >
+                                        </MUI.Button>
+                                        <MUI.Button
+                                            variant="contained"
+                                            color="secondary"
+                                            startIcon={<MUI.Icon>delete</MUI.Icon>}
+                                            href="/products/destroy/{{id}}"
+                                            >
+                                        </MUI.Button>
+                                    </MUI.TableCell>
+                                </MUI.TableRow>
+                            {{/forEach}}
+                        </MUI.TableBody>
+                    </MUI.Table>
+                </MUI.Container>
+        );
+    }
+</script>

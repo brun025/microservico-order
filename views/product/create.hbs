@@ -1,0 +1,41 @@
+<script type="text/babel">
+    function Page() {
+        return (
+                <React.Fragment>
+                    <MUI.Typography variant="h4">Novo produto</MUI.Typography>
+                    <form action="/products" method="post">
+                        <MUI.TextField
+                            name="name"
+                            label="Nome"
+                            margin="normal"
+                            variant="outlined"
+                            fullWidth
+                            required
+                            type="string"
+                        ></MUI.TextField>
+
+                        <MUI.TextField
+                            name="price"
+                            label="Preço"
+                            margin="normal"
+                            variant="outlined"
+                            fullWidth
+                            required
+                            type="number"
+                        ></MUI.TextField>
+
+                        <MUI.TextField
+                            name="description"
+                            label="Descrição"
+                            margin="normal"
+                            variant="outlined"
+                            fullWidth
+                            type="string"
+                        ></MUI.TextField>
+
+                        <MUI.Button type="submit" variant="contained" color="primary">Enviar</MUI.Button>
+                    </form>
+                </React.Fragment>
+        )
+    }
+</script>
