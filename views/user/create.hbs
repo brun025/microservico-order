@@ -1,0 +1,71 @@
+<script type="text/babel">
+    function Page() {
+        const [roles, setRole] = React.useState("");
+        return (
+                <React.Fragment>
+                    <MUI.Typography variant="h4">Novo usuário</MUI.Typography>
+                    <form action="/users" method="post">
+                        <MUI.TextField
+                                select
+                                name="role"
+                                label="Perfil"
+                                margin="normal"
+                                variant="outlined"
+                                fullWidth
+                                required
+                                onChange={(event) => setRole(event.target.value)}
+                        >
+                            <MUI.MenuItem value="" disabled>
+                                <em>Selecione o perfil</em>
+                            </MUI.MenuItem>
+                            <MUI.MenuItem value="{{roles.ADMIN}}">Administrador</MUI.MenuItem>
+                            <MUI.MenuItem value="{{roles.USER}}">Motorista</MUI.MenuItem>
+                            <MUI.MenuItem value="{{roles.CLIENT}}">Cliente</MUI.MenuItem>
+                        </MUI.TextField>
+
+                        <MUI.TextField
+                            name="name"
+                            label="Nome"
+                            margin="normal"
+                            variant="outlined"
+                            fullWidth
+                            required
+                            type="string"
+                        ></MUI.TextField>
+
+                        <MUI.TextField
+                            name="email"
+                            label="E-mail"
+                            margin="normal"
+                            variant="outlined"
+                            fullWidth
+                            required
+                            type="email"
+                        ></MUI.TextField>
+
+                        <MUI.TextField
+                            name="password"
+                            label="Senha"
+                            margin="normal"
+                            variant="outlined"
+                            fullWidth
+                            required
+                            type="password"
+                        ></MUI.TextField>
+
+                        <MUI.TextField
+                            name="passwordConfirmation"
+                            label="Confirmação de senha"
+                            margin="normal"
+                            variant="outlined"
+                            fullWidth
+                            required
+                            type="password"
+                        ></MUI.TextField>
+
+                        <MUI.Button type="submit" variant="contained" color="primary">Salvar</MUI.Button>
+                    </form>
+                </React.Fragment>
+        )
+    }
+</script>

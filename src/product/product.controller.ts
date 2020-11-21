@@ -1,10 +1,8 @@
-import {Controller, Delete, Get, Param, Patch, Post, Redirect, Render, Req, Request} from '@nestjs/common';
+import {Controller, Get, Param, Post, Redirect, Render, Req, Request} from '@nestjs/common';
 import {Product} from "./product.model";
 import {InjectRepository} from "@nestjs/typeorm";
-import {Repository} from "typeorm";
-import {HttpService, Injectable} from '@nestjs/common';
-import {map} from "rxjs/operators";
 import {ProductService} from "./product.service";
+import {Repository} from "typeorm";
 
 @Controller('products') // /products
 export class ProductController {
@@ -58,8 +56,8 @@ export class ProductController {
         product.name = request.body['name'],
         product.price = request.body['price'],
         product.description = request.body['description']
-        // console.log(product);
         const result = await this.productHttp.patch(product, id).toPromise();
+        // console.log(result);
     }
 
     @Get('/destroy/:id')

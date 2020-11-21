@@ -8,6 +8,8 @@ import {TypeOrmModule} from "@nestjs/typeorm";
 import {Order} from "./order/order.model";
 import {ConfigModule} from "@nestjs/config";
 import { Product } from './product/product.model';
+import { User } from './user/user.model';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -21,10 +23,11 @@ import { Product } from './product/product.model';
           username: process.env.MYSQL_USER,
           password: process.env.MYSQL_PASSWORD,
           database: 'micro_orders',
-          entities: [Order, Product],
+          entities: [Order, Product, User],
       }),
       OrderModule,
       ProductModule,
+      UserModule,
       CommandsModule,
   ],
   controllers: [AppController],
