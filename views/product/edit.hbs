@@ -2,8 +2,8 @@
     function Page() {
         return (
                 <React.Fragment>
-                    <MUI.Typography variant="h4">Novo produto</MUI.Typography>
-                    <form action="/products" method="post">
+                    <MUI.Typography variant="h4">Editar produto</MUI.Typography>
+                    <form action="/products/update/{{product.id}}" method="post">
                         <MUI.TextField
                             name="name"
                             label="Nome"
@@ -11,6 +11,7 @@
                             variant="outlined"
                             fullWidth
                             required
+                            defaultValue="{{product.name}}"
                             type="string"
                         ></MUI.TextField>
 
@@ -21,6 +22,7 @@
                             variant="outlined"
                             fullWidth
                             required
+                            defaultValue="{{product.price}}"
                             type="number"
                         ></MUI.TextField>
 
@@ -30,6 +32,7 @@
                             margin="normal"
                             variant="outlined"
                             fullWidth
+                            defaultValue="{{product.description}}"
                             type="string"
                         ></MUI.TextField>
 

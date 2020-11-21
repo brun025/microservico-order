@@ -39,9 +39,21 @@ export class ProductService {
 
     show(id){
         return this.httpService
-            .get(`${this.baseUrl}/driver/${id}`)
+            .get(`${this.baseUrl}/products/${id}`)
             .pipe(
-                map(response => response.data)
+                map(response => response.data.product)
             )
+    }
+
+    patch(product, id) {
+        try {
+            return this.httpService
+                .patch(`${this.baseUrl}/products/${id}`, product)
+                .pipe(
+                    map(response => response.data)
+                )
+        } catch (error) {
+            console.log(error)
+        }
     }
 }

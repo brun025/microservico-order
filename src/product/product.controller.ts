@@ -1,4 +1,4 @@
-import {Controller, Delete, Get, Param, Post, Redirect, Render, Req, Request} from '@nestjs/common';
+import {Controller, Delete, Get, Param, Patch, Post, Redirect, Render, Req, Request} from '@nestjs/common';
 import {Product} from "./product.model";
 import {InjectRepository} from "@nestjs/typeorm";
 import {Repository} from "typeorm";
@@ -32,22 +32,40 @@ export class ProductController {
         return;
     }
 
-    @Post()
-    @Redirect('products')
-    async store(@Req() request: Request) {
-        const product = {
-            "name": request.body['name'],
-            "price": request.body['price'],
-            "description": request.body['description']
-        }
-        const products = await this.productHttp.post(product).toPromise();
+    @Get('/edit/:id')
+    @Render('product/edit')
+    async edit(@Param('id') id: string) {
+        const product = await this.productHttp.show(id).toPromise();
+        return {product}
         // console.log(products);
+    }
+
+    @Post()
+    @Redirect('/products')
+    async store(@Req() request: Request) {
+        const product = new Product();
+        product.name = request.body['name'],
+        product.price = request.body['price'],
+        product.description = request.body['description']
+        const result = await this.productHttp.post(product).toPromise();
+        // console.log(result);
+    }
+
+    @Post('/update/:id')
+    @Redirect('/products')
+    async patch(@Req() request: Request, @Param('id') id: string) {
+        const product = new Product();
+        product.name = request.body['name'],
+        product.price = request.body['price'],
+        product.description = request.body['description']
+        // console.log(product);
+        const result = await this.productHttp.patch(product, id).toPromise();
     }
 
     @Get('/destroy/:id')
     @Redirect('/products')
     async destroy(@Param('id') id: string) {
-        const products = await this.productHttp.destroy(id).toPromise();
-        // console.log(products);
+        const result = await this.productHttp.destroy(id).toPromise();
+        // console.log(result);
     }
 }
