@@ -4,14 +4,16 @@
                 <MUI.Container>
                     <MUI.Typography variant={"h4"}>Listagem de usuários</MUI.Typography>
                     <MUI.Box dir={'rtl'} paddingBottom={2}>
-                        <MUI.Button
-                                title="Adicionar novo produto"
-                                color="primary"
-                                variant="contained"
-                                href="/users/create"
-                        >
-                            Novo usuário
-                        </MUI.Button>
+                        {{#if data.user.admin}}
+                            <MUI.Button
+                                    title="Adicionar novo produto"
+                                    color="primary"
+                                    variant="contained"
+                                    href="/users/create"
+                            >
+                                Novo usuário
+                            </MUI.Button>
+                        {{/if}}
                     </MUI.Box>
                     <MUI.Table>
                         <MUI.TableHead>
@@ -23,7 +25,7 @@
                             </MUI.TableRow>
                         </MUI.TableHead>
                         <MUI.TableBody>
-                            {{#forEach data}}
+                            {{#forEach data.users}}
                                 <MUI.TableRow>
                                     <MUI.TableCell>{{name}}</MUI.TableCell>
                                     <MUI.TableCell>{{email}}</MUI.TableCell>

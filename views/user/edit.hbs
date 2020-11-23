@@ -3,14 +3,14 @@
         return (
                 <React.Fragment>
                     <MUI.Typography variant="h4">Editar usuário</MUI.Typography>
-                    <form action="/users/update/{{data.user.id}}" method="post">
+                    <form action="/users/update/{{data.editUser.id}}" method="post">
                         <MUI.TextField
                                 select
                                 name="role"
                                 label="Perfil"
                                 margin="normal"
                                 variant="outlined"
-                                defaultValue="{{data.user.role}}"
+                                defaultValue="{{data.editUser.role}}"
                                 fullWidth
                                 required
                         >
@@ -29,7 +29,7 @@
                             variant="outlined"
                             fullWidth
                             required
-                            defaultValue="{{data.user.name}}"
+                            defaultValue="{{data.editUser.name}}"
                             type="string"
                         ></MUI.TextField>
 
@@ -40,7 +40,7 @@
                             variant="outlined"
                             fullWidth
                             required
-                            defaultValue="{{data.user.email}}"
+                            defaultValue="{{data.editUser.email}}"
                             type="email"
                         ></MUI.TextField>
 

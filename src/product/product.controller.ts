@@ -3,39 +3,47 @@ import {Product} from "./product.model";
 import {InjectRepository} from "@nestjs/typeorm";
 import {ProductService} from "./product.service";
 import {Repository} from "typeorm";
+import { readFileSync } from 'fs';
 
 @Controller('products') // /products
 export class ProductController {
 
     baseUrl = process.env.MICRO_DRIVERS_URL;
+    user: any;
 
     constructor(
         @InjectRepository(Product)
         private readonly productRepo: Repository<Product>,
         private readonly productHttp: ProductService
     ) {
-
+        this.user = JSON.parse(readFileSync("teste.json", "utf8"));
     }
 
     @Get()
     @Render('product/index')
     async index() {
+        this.user = JSON.parse(readFileSync("teste.json", "utf8"));
+
+        if(this.user.role == 'ADMIN')
+            this.user.admin = true;
+        else
+            this.user.admin = false;
+
         const products = await this.productHttp.list().toPromise();
-        return {data: products}
+        return {data: {"products": products, "user": this.user}}
     }
 
     @Get('/create')
     @Render('product/create')
     async create() {
-        return;
+        return {data: {"user": this.user}}
     }
 
     @Get('/edit/:id')
     @Render('product/edit')
     async edit(@Param('id') id: string) {
         const product = await this.productHttp.show(id).toPromise();
-        return {product}
-        // console.log(products);
+        return {data: {"product": product, "user": this.user}}
     }
 
     @Post()

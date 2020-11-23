@@ -52,14 +52,28 @@
                                 <MUI.MenuItem onClick={() => {handleClose("/users")}}>
                                     Usuários
                                 </MUI.MenuItem>
-                                <MUI.MenuItem onClick={() => {handleClose("/products")}}>
-                                    Produtos
-                                </MUI.MenuItem>
+                                {{#if data.user.admin}}
+                                    <MUI.MenuItem onClick={() => {handleClose("/products")}}>
+                                        Produtos
+                                    </MUI.MenuItem>
+                                    <MUI.MenuItem onClick={() => {handleClose("/orders/report")}}>
+                                        Relatório
+                                    </MUI.MenuItem>
+                                {{/if}}
                                 <MUI.MenuItem onClick={() => {handleClose("/logout")}}>
                                     Logout
                                 </MUI.MenuItem>
                             </MUI.Menu>
+                            
+                            <MUI.Container>
+                                <MUI.Box dir={'rtl'}>
+                                    <MUI.Typography variant="h6">
+                                        {{data.user.name}}
+                                    </MUI.Typography>
+                                </MUI.Box>
+                            </MUI.Container>
                         </MUI.Toolbar>
+
                     </MUI.AppBar>
                     <MUI.Container>
                         <Page/>
@@ -69,11 +83,11 @@
     }
 
     ReactDOM.render(
-            <React.Fragment>
-                <MUI.CssBaseline/>
-                <App/>
-            </React.Fragment>,
-            document.querySelector('#root'),
+        <React.Fragment>
+            <MUI.CssBaseline/>
+            <App/>
+        </React.Fragment>,
+        document.querySelector('#root'),
     );
 </script>
 </body>

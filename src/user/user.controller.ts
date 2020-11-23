@@ -4,41 +4,53 @@ import {InjectRepository} from "@nestjs/typeorm";
 import {UserService} from "./user.service";
 import {Repository} from "typeorm";
 import { UserRole } from './user-roles.enum';
+import { readFileSync } from 'fs';
 
 @Controller('users') // /users
 export class UserController {
 
     baseUrl = process.env.MICRO_DRIVERS_URL;
+    user: any;
 
     constructor(
         @InjectRepository(User)
         private readonly productRepo: Repository<User>,
         private readonly userHttp: UserService
     ) {
-
     }
 
     @Get()
     @Render('user/index')
     async index() {
-        const users = await this.userHttp.list().toPromise();
-        return {data: users}
+        this.user = JSON.parse(readFileSync("teste.json", "utf8"));
+
+        let users = null;
+
+        if(this.user.role != 'ADMIN'){
+            this.user.admin = false;
+            users = [this.user];
+        }
+        else{
+            this.user.admin = true;
+            users = await this.userHttp.list().toPromise();
+        }
+
+        return {data: {"user": this.user, "users": users}}
     }
 
     @Get('/create')
     @Render('user/create')
     async create() {
         const roles = UserRole;
-        return {roles};
+        return {data: {"roles": roles, "user": this.user}}
     }
 
     @Get('/edit/:id')
     @Render('user/edit')
     async edit(@Param('id') id: string) {
         const user = await this.userHttp.show(id).toPromise();
-        // console.log(user);
         const roles = UserRole;
-        return {data: {"user": user, "roles": roles}};
+        return {data: {"editUser": user, "roles": roles, "user": this.user}};
     }
 
     @Post()

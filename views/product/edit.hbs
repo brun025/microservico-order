@@ -3,7 +3,7 @@
         return (
                 <React.Fragment>
                     <MUI.Typography variant="h4">Editar produto</MUI.Typography>
-                    <form action="/products/update/{{product.id}}" method="post">
+                    <form action="/products/update/{{data.product.id}}" method="post">
                         <MUI.TextField
                             name="name"
                             label="Nome"
@@ -11,7 +11,7 @@
                             variant="outlined"
                             fullWidth
                             required
-                            defaultValue="{{product.name}}"
+                            defaultValue="{{data.product.name}}"
                             type="string"
                         ></MUI.TextField>
 
@@ -22,7 +22,7 @@
                             variant="outlined"
                             fullWidth
                             required
-                            defaultValue="{{product.price}}"
+                            defaultValue="{{data.product.price}}"
                             type="number"
                         ></MUI.TextField>
 
@@ -32,7 +32,7 @@
                             margin="normal"
                             variant="outlined"
                             fullWidth
-                            defaultValue="{{product.description}}"
+                            defaultValue="{{data.product.description}}"
                             type="string"
                         ></MUI.TextField>
 

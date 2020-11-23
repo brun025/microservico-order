@@ -41,6 +41,9 @@ export class Order {
     @Column()
     amount: number;
 
+    @Column()
+    total: number;
+
     @Column("simple-array")
     location_geo: number[];
 
